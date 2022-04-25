@@ -3,13 +3,27 @@
 import { useState, useEffect } from 'react';
 
 function Categores() {
-  const [datacategores, setDataCategores] = useState([]);
+  const [datacategores, setDataCategores] = useState();
 
   async function fetchMoviesJSON() {
-    const response = await fetch('https://api.mercadolibre.com/sites/MLA/categories');
+    const response = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
     const categores = await response.json();
     setDataCategores(categores);
     console.log(datacategores)
+  }
+
+  const renderCategores = () => {
+    if (!datacategores) {
+        return <p>carregando</p>
+    } else {
+      return datacategores.map((el, k) => {
+        if(!el) return console.log("entro no if")
+        else {
+        <li key={k}>{el.name}</li>
+        console.log(el.name)
+        }
+      })
+    }
   }
 
   useEffect(() => {
@@ -18,12 +32,10 @@ function Categores() {
 
   return (
     <div>
-        alo
+        ala
         <ul>
         {
-            datacategores.forEach((el) => {
-                <li>{el.name}</li>
-            })
+            renderCategores()
         }
         </ul>
     </div>
