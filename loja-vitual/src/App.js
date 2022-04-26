@@ -1,9 +1,9 @@
-import Categores from './components/aplication/Categores.js'
+import AplicationOrganizate from "./components/aplication/AplicationOrganizate";
 
 function App() {
   return (
     <div>
-      <Categores />
+      <AplicationOrganizate />
     </div>
   );
 }
